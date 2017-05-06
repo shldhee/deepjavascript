@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div0">Click Me Div0</div>
+    <div id="div1">Click Me Div1</div>
+    <div id="div2">Click Me Div2</div>
+    <script type="text/javascript">
+        var i, len = 3;
+        for ( i = 0; i < len; i += 1 ) {
+            document.getElementById("div" + i).addEventListener("click", function () {
+                alert("You clicked div #" + i );
+            }, false);
+        }
+    </script>
+</body>
+</html>
