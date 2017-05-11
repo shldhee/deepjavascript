@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    // function abc(){
+    //
+    //     var a = "bbb";
+    //
+    //     console.log(a); // 1 bbb
+    //
+    //     function b(){
+    //
+    //         console.log(a); // 2
+    //
+    //         (function(){
+    //
+    //             console.log(a); // 3
+    //
+    //             a = "ccc"
+    //
+    //         })();
+    //
+    //         var a;
+    //
+    //         c();
+    //
+    //     }
+    //
+    //     function c(){
+    //
+    //         console.log(a); // 4
+    //
+    //     }
+    //
+    //     b();
+    //
+    // }
+    // abc();
+
+    function abc(){
+
+        var a = "bbb";
+
+        function b(){
+
+            console.log(a);
+
+            var a;
+
+        }
+
+        b();
+
+    }
+    abc();
+    </script>
+</body>
+</html>

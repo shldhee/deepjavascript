@@ -11,25 +11,26 @@
         <button data-cb="1">Add div</button>
         <button data-cb="2">Add img</button>
         <button data-cb="delete">Clear</button>
+        <button data-cb="3">P tag</button>
         Adding below...<br />
         <div id="appendDiv"></div>
     </div>
     <script type="text/javascript">
         (function() {
-            var appendDiv = document.getElementById("appendDiv");
-            document.getElementById("wrapper").addEventListener("click", append);
+            var appendDiv = document.getElementById("appendDiv"); // (function() {}()) 형태로 한 번의 초기화만으로 이후에 함수들이 계속 접근할 수 있다.
+            document.getElementById("wrapper").addEventListener("click", append); // click event 설정 부모 wrapper에 설정해서 자식들까지 이벤트 동일 적용(캡처링인듯)
 
-            function append(e) {
-                var target = e.target || e.srcElement || event.srcElement;
-                var callbackFunction = callback[target.getAttribute("data-cb")];
-                appendDiv.appendChild(callbackFunction());
+            function append(e) { // event 콜백함수 정의
+                var target = e.target || e.srcElement || event.srcElement; // event가 발생한 개체 반환
+                var callbackFunction = callback[target.getAttribute("data-cb")]; // callback 객체에 "data-cb"의 반환값으로 키 설정해 밸류값(함수) 할당
+                appendDiv.appendChild(callbackFunction()); // callbackFunction을 실행하고 문서 맨밑에 추가
             };
             var callback = {
                 "1":(function () {
-                    var div = document.createElement("div");
-                    div.innerHTML = "Adding new div";
-                    return function () {
-                        return div.cloneNode(true);
+                    var div = document.createElement("div"); // div 요소 생성
+                    div.innerHTML = "Adding new div"; // div에 innerHTML으로 텍스트 삽입
+                    return function () { // div.cloneNode(true)를 외부에서 사용하기 위해 함수로 반환
+                        return div.cloneNode(true); // div복사본을 반환(true이므로 자식까지 다 복사, false일땐 해당 요소만 복제)
                     }
                 }()),
                 "2":(function() {
@@ -45,6 +46,14 @@
                 }
             }
         }());
+
+        /*
+            1. callback 변수에서
+            2. (function(){}()) 으로 스코프를 설정해 var div, var img를 함수안에서 접근이 가능해 함수로 반환시 외부에서도 사용할 수 있다.
+                즉, 최초에 초기화된 고정적인 값이나 변수를 자주 이용하는 경우인듯...
+            3. callback(1) = function() { return div.cloneNode(true); }
+            4. 따라서 이벤트의 콜백함수에서 callback 변수 안에 있는 1의 값의 변수에도 접근이 가능하다.
+        */
     </script>
 </body>
 </html>
