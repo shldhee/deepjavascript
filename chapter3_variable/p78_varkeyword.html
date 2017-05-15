@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var get = "global";
+		(function() {
+			var get = "immdediate function";
+			insideFunction();
+			console.log("2. immdediate function: " + get); //3. get이 2에서 할당되어 "will I be global"
+
+			function insideFunction() {
+				console.log("1. Inside function: " + get); // 1/ get === "immdediate function"
+				get = "will I be global?" // 2. get 할당
+			}
+		}());
+		console.log("3. Global: " + get); // 4. get === global
+	</script>
+</body>
+</html>

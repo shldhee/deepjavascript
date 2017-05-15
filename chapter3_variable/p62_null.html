@@ -8,11 +8,15 @@
 </head>
 <body>
     <script type="text/javascript">
-        if (myVariable !== null && typeof myVariable === "object") {
+	var myVariable = false;
+        if (myVariable !== null && typeof myVariable === "object") { // null이 아니고 객체일때
+			alert("first#1");
             // do something with myVariable
-        } else if (!!myV) {    // myVariable String일때
-            alert("Variable is string: " + myVariable);
+        } else if (!!myVariable && typeof myVariable === "object") {    // true이고 객체일때 왜 !! 쓰는가?
+			alert("second#2");
+			// do something with myVariable
         }
+		// 둘중 아무거나 사용해도 된다.
     </script>
 </body>
 </html>

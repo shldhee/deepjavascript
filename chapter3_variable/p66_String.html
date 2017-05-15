@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var color1 = new String("red");
+		var color2 = "red";
+		var color3 = String("red");
+
+		console.log(color1.toUpperCase()); // RED ;
+		console.log(color2.toUpperCase()); // RED ;
+		console.log(color3.toUpperCase()); // RED ;
+
+		console.log(color1 instanceof String); // true
+		console.log(color2 instanceof String); // false
+		console.log(color3 instanceof String); // false
+
+		console.log(typeof color1); // object
+		console.log(typeof color2); // string
+		console.log(typeof color3); // string
+	</script>
+</body>
+</html>
