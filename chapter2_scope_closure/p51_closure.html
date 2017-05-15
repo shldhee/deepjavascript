@@ -17,7 +17,7 @@
     </div>
     <script type="text/javascript">
         (function() {
-            var appendDiv = document.getElementById("appendDiv"); // (function() {}()) 형태로 한 번의 초기화만으로 이후에 함수들이 계속 접근할 수 있다.
+            var appendDiv = document.getElementById("appendDiv"); // (function() {}()) 형태로 한 번의 초기화만으로 이후에 함수들이 계속 접근할 수 있다. 외부에서 접근불가 클로저
             document.getElementById("wrapper").addEventListener("click", append); // click event 설정 부모 wrapper에 설정해서 자식들까지 이벤트 동일 적용(캡처링인듯)
 
             function append(e) { // event 콜백함수 정의
@@ -27,10 +27,10 @@
             };
             var callback = {
                 "1":(function () {
-                    var div = document.createElement("div"); // div 요소 생성
+                    var div = document.createElement("div"); // div 변수에 div 요소 생성(외부에서 접근 불가 클로저)
                     div.innerHTML = "Adding new div"; // div에 innerHTML으로 텍스트 삽입
                     return function () { // div.cloneNode(true)를 외부에서 사용하기 위해 함수로 반환
-                        return div.cloneNode(true); // div복사본을 반환(true이므로 자식까지 다 복사, false일땐 해당 요소만 복제)
+                        return div.cloneNode(true); // div복사본을 반환(true이므로 자식까지 다 복사, false일땐 해당 요소만 복제) 클로저를 이용해서 div변수를 외부에서 사용 가능하게 했다.
                     }
                 }()),
                 "2":(function() {
