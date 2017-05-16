@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function whatsThis() {
+            return this.toString();
+        }
+        var unikys = {
+            what: whatsThis,
+            toString: function () {
+                return "[object unikys]";
+            }
+        };
+
+        whatsThis(); // window.toString();
+        unikys.what(); // unikyus.toString(); -> [object unikys]
+        whatsThis.call(); // window.toString();
+        whatsThis.apply(unikys); // [object unikys]
+        unikys.what.call(undefined); // [object unikys] ? undefined
+        unikys.what.call(unikys); // [object unikys]
+    </script>
+</body>
+</html>
