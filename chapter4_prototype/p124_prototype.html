@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function Person(name, blog) {
+            this.name = name;
+            this.blog = blog;
+        }
+        Person.prototype.getName = function() {
+            return this.name;
+        };
+        Person.prototype.getBlog = function() {
+            return this.blog;
+        };
+        var unikys = new Person("unikys", "unikys.tistory.com");
+        var stranger = new Person("stranger", "www.google.com");
+        console.log('unikys.getName()', unikys.getName());
+        console.log('unikys.getBlog()', unikys.getBlog());
+        console.log('stranger.getName()', stranger.getName());
+        console.log('stranger.getBlog()', stranger.getBlog());
+
+        /*p125*/
+        console.log("*******p125*******");
+
+        Person.prototype.introduce = function () {
+            console.log("Hi!, my name is" + this.name + ", please visit my blog " + this.blog);
+        };
+        unikys.introduce();
+
+        /*p125_2*/
+        console.log("*******p125_2*******");
+
+        Person.prototype.introduce = function () {
+            console.log("Hello, " + this.name + "!");
+        };
+        unikys.introduce();
+
+        /*p125_3*/
+        console.log("*******p125_3*******");
+
+        Person.prototype.gender = "male";
+        console.log(unikys.gender);
+        console.log(stranger.gender);
+
+        /*p126*/
+        console.log('*******p126********');
+
+        stranger.gender = "female";
+
+        console.log(stranger.gender); // female
+        console.log(unikys.gender); // male
+        console.log(Person.prototype.gender); // male
+    </script>
+
+</body>
+</html>
